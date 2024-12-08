@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnmbn2tr238ei"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ryxed"]
+[ext_resource type="ArrayMesh" uid="uid://dp00bwio22hsy" path="res://exported/player.obj" id="2_xm7dr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hbvah"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbkal"]
+size = Vector3(0.4, 2.8, 1.3)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("collider")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 3
+input_ray_pickable = false
+script = ExtResource("1_ryxed")
+collider = NodePath("CollisionShape3D2")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-0.0174523, 0.104513, -0.994371, 0, 0.994522, 0.104528, 0.999847, 0.00182427, -0.0173567, -0.249345, 2.50583, -0.00154953)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+shape = SubResource("SphereShape3D_hbvah")
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+transform = Transform3D(1, 1.16415e-09, -1.67638e-08, 0, 1, 9.53674e-07, 0, 7.45058e-09, 1, 0.00783959, -0.0469468, 0.446671)
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraPivot/SpringArm3D/Camera3D"]
+transform = Transform3D(-0.0174523, 1.16415e-10, 0.999848, 0.104513, 0.994522, 0.00182427, -0.99437, 0.104529, -0.0173567, -0.0141324, -0.085927, -0.912416)
+target_position = Vector3(10, 0, 0)
+collide_with_areas = true
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0179828, 1.00739, -0.0109804)
+size = Vector3(0.35, 2.00983, 1.33949)
+
+[node name="Player2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.00976115, 0.005826, -0.00154954)
+mesh = ExtResource("2_xm7dr")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999998, 0.0018675, 7.4607e-14, -0.0018675, 0.999998, 8.16311e-11, 7.4607e-14, -8.16311e-11, 1, 0.00168878, 1.4043, -7.38187e-11)
+shape = SubResource("BoxShape3D_dbkal")

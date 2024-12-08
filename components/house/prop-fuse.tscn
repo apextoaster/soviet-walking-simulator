@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbulsby1wvec"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqb7ddhx5573s" path="res://exported/house-breaker.obj" id="1_0gto6"]
+[ext_resource type="Script" path="res://scripts/prop_fuse.gd" id="1_xp4aj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bua74"]
+points = PackedVector3Array(-0.5, 0, 0, 0.0999217, 0, 0, -0.5, 0, 0.1, -0.5, 0.899824, 0, 0.3, 0.699843, 0, 0.0999217, 0, 0.1, -0.300078, 0.699843, 0.2, -0.5, 0.899824, 0.1, -0.300078, 1.59984, 0, 0.3, 0.699843, 0.2, 0.3, 1.59984, 0, -0.300078, 1.59984, 0.2, -0.200078, 1.8, 0, 0.3, 1.59984, 0.2, 0.2, 1.8, 0, -0.200078, 1.8, 0.1, 0.2, 1.8, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_geuum"]
+lifetime_randomness = 0.3
+particle_flag_align_y = true
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 0.4, 0.3)
+spread = 15.0
+flatness = 0.5
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_min = 0.5
+color = Color(1, 0.65, 0, 1)
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.05
+collision_mode = 1
+collision_friction = 0.5
+collision_bounce = 0.5
+
+[sub_resource type="Gradient" id="Gradient_rkomr"]
+offsets = PackedFloat32Array(0.2, 0.5, 0.8)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mv7uk"]
+gradient = SubResource("Gradient_rkomr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3sb4j"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_mv7uk")
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_aqhuc"]
+material = SubResource("StandardMaterial3D_3sb4j")
+flip_faces = true
+size = 0.3
+sections = 2
+section_segments = 2
+
+[node name="fuse-box" type="Node3D"]
+script = ExtResource("1_xp4aj")
+has_power = true
+interaction_tooltip = "Fuse Box"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="House-breaker" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_0gto6")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bua74")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.16, 0.4)
+amount = 2
+lifetime = 2.0
+explosiveness = 0.4
+randomness = 0.5
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_geuum")
+draw_pass_1 = SubResource("RibbonTrailMesh_aqhuc")

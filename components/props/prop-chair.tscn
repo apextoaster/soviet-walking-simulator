@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcgsrhlga1kcp"]
+
+[ext_resource type="Script" path="res://scripts/prop_interact.gd" id="1_753g7"]
+[ext_resource type="ArrayMesh" uid="uid://cnx0bakcx7ngq" path="res://exported/prop-chair.obj" id="1_ubvbx"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d45r5"]
+points = PackedVector3Array(0.319836, 1.71349, -0.278397, -0.8, 0.0072345, -0.399892, 0.3, 0.0169005, -0.393549, -0.793758, 0.0167453, 0.7, -0.8, 1.69293, -0.399892, 0.319836, 0.823209, 0.71973, -0.813492, 0.823209, 0.71973, 0.3, 0.0169005, 0.699898, 0.3, 1.68327, -0.393549, -0.813492, 1.71349, -0.278397)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_753g7")
+interaction_tooltip = "Chair"
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+sleeping = true
+
+[node name="Prop-chair" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = ExtResource("1_ubvbx")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_d45r5")
+
+[connection signal="input_event" from="RigidBody3D" to="." method="_on_rigid_body_3d_input_event"]
+[connection signal="mouse_entered" from="RigidBody3D" to="." method="_on_physics_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="RigidBody3D" to="." method="_on_physics_body_3d_mouse_exited"]

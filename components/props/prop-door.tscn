@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://c50u5k024yqe2"]
+
+[ext_resource type="Script" path="res://scripts/prop_door.gd" id="1_a81yv"]
+[ext_resource type="ArrayMesh" uid="uid://c7k3hr0req724" path="res://exported/prop-door.obj" id="2_ejtcy"]
+[ext_resource type="AudioStream" uid="uid://n3wx2hlapmfc" path="res://sound/341312__pp87__door-handle-11.wav" id="3_m5uqt"]
+[ext_resource type="Material" uid="uid://lbxr6kyfctvm" path="res://materials/metal-dark.tres" id="3_uyvxr"]
+[ext_resource type="Material" uid="uid://vu4de2xnm2fj" path="res://materials/concrete.tres" id="4_hfldj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8pj6l"]
+points = PackedVector3Array(1.84519, 3.12433, 0.0698413, 1.40238, 1.74683, -0.0777778, 1.40238, 1.74683, 0.0698413, 1.40238, 3.12433, -0.0777778, 1.84519, 1.74683, -0.0777778, 1.84519, 1.74683, 0.0698413, 1.40238, 3.12433, 0.0698413, 1.84519, 3.12433, -0.0777778)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lg0a2"]
+points = PackedVector3Array(1.45166, 1.15606, -0.274603, 1.74676, 1.74683, 0.266667, 1.45166, 1.74683, 0.266667, 1.84519, -0.0246031, 0.0698364, 1.74676, 1.74683, -0.274603, 1.40238, -0.0246031, 0.0698364, 1.84519, -0.0246031, -0.077773, 1.40238, 1.74683, -0.077773, 1.84519, 1.74683, -0.077773, 1.40238, -0.0246031, -0.077773, 1.45166, 1.15606, 0.266667, 1.45166, 1.74683, -0.274603, 1.74676, 1.15606, 0.266667, 1.74676, 1.15606, -0.274603, 1.84519, 1.74683, 0.0698364, 1.40238, 1.74683, 0.0698364)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1b43w"]
+points = PackedVector3Array(1.40238, 3.1246, 0.0698413, -0.0246031, -0.0246031, -0.0777778, -0.0246031, -0.0246031, 0.0698413, -0.0246031, 3.1246, -0.0777778, 1.40238, -0.0246031, -0.0777778, 1.40238, -0.0246031, 0.0698413, -0.0246031, 3.1246, 0.0698413, 1.40238, 3.1246, -0.0777778)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_a81yv")
+interaction_tooltip = "Door"
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+
+[node name="Prop-door" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.8, 0, -1.8)
+mesh = ExtResource("2_ejtcy")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_uyvxr")
+surface_material_override/1 = ExtResource("4_hfldj")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("ConvexPolygonShape3D_8pj6l")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("ConvexPolygonShape3D_lg0a2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("ConvexPolygonShape3D_1b43w")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../AnimatableBody3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.5, 0)
+stream = ExtResource("3_m5uqt")
+
+[connection signal="input_event" from="AnimatableBody3D" to="." method="_on_rigid_body_3d_input_event"]
+[connection signal="mouse_entered" from="AnimatableBody3D" to="." method="_on_physics_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="AnimatableBody3D" to="." method="_on_physics_body_3d_mouse_exited"]

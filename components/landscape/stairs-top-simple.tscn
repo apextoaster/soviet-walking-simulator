@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsvxt8a7vlcy7"]
+
+[ext_resource type="ArrayMesh" uid="uid://crubypmajgho5" path="res://exported/land-hill-stairs-top.obj" id="1_ualfy"]
+[ext_resource type="Material" uid="uid://nsm5tavh525m" path="res://materials/concrete-voxel.tres" id="2_kesgv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vc6y"]
+size = Vector3(2.09888, 2.12708, 2.7959)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kr14h"]
+size = Vector3(2.09888, 2.02203, 4.00598)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jal0m"]
+size = Vector3(2.82843, 2.12708, 2.80352)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c6rys"]
+size = Vector3(2.82843, 2.12708, 4.0012)
+
+[node name="Stairs-top" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Land-hill-stairs-top" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_ualfy")
+skeleton = NodePath("../..")
+surface_material_override/1 = ExtResource("2_kesgv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.947388, -0.950378, 0.00244141)
+shape = SubResource("BoxShape3D_0vc6y")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.947388, -1.0029, 0.0010376)
+shape = SubResource("BoxShape3D_kr14h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.357936, -1.65794, 0.00362015)
+shape = SubResource("BoxShape3D_jal0m")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.349073, -1.74843, 0.00111628)
+shape = SubResource("BoxShape3D_c6rys")

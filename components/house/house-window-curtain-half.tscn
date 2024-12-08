@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://7sngtiygtpbl"]
+
+[ext_resource type="ArrayMesh" uid="uid://bwn7jw8dch12y" path="res://exported/house-window-curtain-half.obj" id="1_und75"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="House-window-curtain-half" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3, -1)
+mesh = ExtResource("1_und75")

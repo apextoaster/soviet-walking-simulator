@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://wqi68euk1m73"]
+
+[ext_resource type="ArrayMesh" uid="uid://c3tx8bfcy43xh" path="res://exported/house-pipe-straight.obj" id="1_5fgyj"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xjalg"]
+points = PackedVector3Array(1.39998, 4, 0.1, 1.5, 4, -3.91603e-05, 1.29999, 4, 0.1, 1.39998, 0, 0.1, 1.5, 4, -0.20002, 1.5, 0, -3.91603e-05, 1.2, 4, -3.91603e-05, 1.29999, 0, 0.1, 1.39998, 4, -0.30001, 1.5, 3.09984, -0.4, 1.5, 0, -0.20002, 1.2, 4, -0.20002, 1.2, 0, -3.91603e-05, 1.29999, 4, -0.30001, 1.2, 3.09984, -0.4, 1.5, 1, -0.4, 1.39998, 0, -0.30001, 1.2, 0, -0.20002, 1.2, 1, -0.4, 1.29999, 0, -0.30001)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="House-pipe-straight" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0)
+mesh = ExtResource("1_5fgyj")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_xjalg")

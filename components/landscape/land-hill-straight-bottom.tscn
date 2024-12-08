@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://yr24kdirtqpj"]
+
+[ext_resource type="ArrayMesh" uid="uid://cqcx4e4yks7a6" path="res://exported/land-hill-straight-bottom.obj" id="1_m2o6u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h4hqw"]
+size = Vector3(4, 0.3, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4tcx"]
+size = Vector3(4, 0.3, 2.675)
+
+[node name="Land-ground-flat" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Land-hill-straight-bottom" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_m2o6u")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.75)
+shape = SubResource("BoxShape3D_h4hqw")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 1.1, -1.11)
+shape = SubResource("BoxShape3D_p4tcx")

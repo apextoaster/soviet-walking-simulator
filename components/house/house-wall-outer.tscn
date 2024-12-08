@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt4ck56fhhgb2"]
+
+[ext_resource type="ArrayMesh" uid="uid://cq2h40fmt2rtp" path="res://exported/house-wall-outer.obj" id="1_tiwgn"]
+[ext_resource type="Material" uid="uid://dyxvib1yhggk3" path="res://materials/wall.tres" id="2_5v2um"]
+[ext_resource type="Material" uid="uid://c2jbyf3txccsm" path="res://materials/wall-highlight.tres" id="3_6vdpp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ce84m"]
+points = PackedVector3Array(3.8, 3.9, 7.9, 3.7, 3.9, 7.9, 3.8, 0, 7.89963, 3.8, 3.9, 4.1, 3.7, 3.9, 4.1, 3.7, 0, 7.89963, 3.8, 0, 4.1, 3.7, 0, 4.1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 0, -4.1)
+shape = SubResource("ConvexPolygonShape3D_ce84m")
+
+[node name="House-wall-outer" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 2)
+mesh = ExtResource("1_tiwgn")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_5v2um")
+surface_material_override/1 = ExtResource("3_6vdpp")

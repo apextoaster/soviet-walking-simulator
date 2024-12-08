@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://on1ttbtyxhg6"]
+
+[ext_resource type="ArrayMesh" uid="uid://dw7wobueqy5m4" path="res://exported/house-kitchen-fridge.obj" id="1_ifyhf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a357n"]
+points = PackedVector3Array(1, 0, 3, 2, 0, 3, 1, 0, 4, 1, 2.1, 3, 2, 0, 4, 2, 2.1, 3, 1, 2.1, 4, 2, 2.1, 4)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="House-kitchen-fridge" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+mesh = ExtResource("1_ifyhf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+shape = SubResource("ConvexPolygonShape3D_a357n")

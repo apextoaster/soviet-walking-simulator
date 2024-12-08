@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba6y57hxy2wom"]
+
+[ext_resource type="ArrayMesh" uid="uid://gano0hvxxw7k" path="res://exported/house-pipe-end.obj" id="1_5bran"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xfd07"]
+points = PackedVector3Array(-0.50002, 2.49998, 0.1, -0.4, 2.39996, -3.91603e-05, -0.4, 2.49998, -0.100029, -0.50002, 2.6, -3.91603e-05, -0.60001, 2.49998, 0.1, -0.50002, 0, 0.1, -0.4, 0, -3.91603e-05, -0.4, 2.49998, -0.4, -0.60001, 2.6, -3.91603e-05, -0.50002, 2.6, -0.4, -0.7, 2.49998, -0.100029, -0.7, 2.39996, -3.91603e-05, -0.60001, 0, 0.1, -0.4, 0, -0.20002, -0.4, 0.999941, -0.4, -0.60001, 2.6, -0.4, -0.7, 2.49998, -0.4, -0.7, 0, -3.91603e-05, -0.50002, 0, -0.30001, -0.7, 0.999941, -0.4, -0.7, 0, -0.20002, -0.60001, 0, -0.30001)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="House-pipe-end" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+mesh = ExtResource("1_5bran")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_xfd07")

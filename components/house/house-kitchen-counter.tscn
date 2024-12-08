@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://clystngbvc2w7"]
+
+[ext_resource type="ArrayMesh" uid="uid://c7g4chitsruld" path="res://exported/house-kitchen-counter.obj" id="1_bhnrm"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1bs4u"]
+points = PackedVector3Array(-0.2, 0, 3, 0.9, 0, 3, -0.2, 0, 3.89996, -0.2, 1.2, 3, 0.9, 0, 3.89996, 0.9, 1.2, 3, 0.0999804, 0.6, 4, -0.2, 1.2, 3.89996, 0.199902, 0.6, 4, 0.9, 1.2, 3.89996, 0.0999804, 0.799922, 4, 0.199902, 0.799922, 4)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="House-kitchen-counter" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh = ExtResource("1_bhnrm")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+shape = SubResource("ConvexPolygonShape3D_1bs4u")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcbd8q48efvwd"]
+
+[ext_resource type="ArrayMesh" uid="uid://bd6s637nde6b8" path="res://exported/land-hill-stairs-bottom.obj" id="1_y4bfq"]
+[ext_resource type="Material" uid="uid://nsm5tavh525m" path="res://materials/concrete-voxel.tres" id="2_56onf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vc6y"]
+size = Vector3(2.09888, 2.12708, 2.7959)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fh2cn"]
+size = Vector3(2.09888, 2.02231, 4.00677)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jal0m"]
+size = Vector3(2.82843, 2.12708, 2.80352)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ooxd0"]
+size = Vector3(2.82843, 2.12708, 4.00962)
+
+[node name="Stairs-top" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956828, -2.65413, 0.00244141)
+shape = SubResource("BoxShape3D_0vc6y")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956828, -2.70651, -0.00247198)
+shape = SubResource("BoxShape3D_fh2cn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 1.72649, -1.4764, 0.00362015)
+shape = SubResource("BoxShape3D_jal0m")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 1.81965, -1.4764, 0.000325561)
+shape = SubResource("BoxShape3D_ooxd0")
+
+[node name="Land-hill-stairs-bottom" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_y4bfq")
+skeleton = NodePath("../..")
+surface_material_override/1 = ExtResource("2_56onf")

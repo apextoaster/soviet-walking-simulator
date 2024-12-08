@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtu7mepjn2roh"]
+
+[ext_resource type="ArrayMesh" uid="uid://w6o5v5ry0x02" path="res://exported/house-kitchen-pan.obj" id="1_nb8pa"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4e7eq"]
+points = PackedVector3Array(-1.29, 1.2, 3.41672, -0.792907, 1.30712, 3.70731, -0.992893, 1.40712, 4.20714, -1.20707, 1.30712, 3.29286, -0.792907, 1.19286, 3.70731, -1.10711, 1.29288, 4.20714, -0.892926, 1.30712, 3.29286, -1.30714, 1.30712, 3.70731, -1.30714, 1.19286, 3.70731, -1.10711, 1.40712, 3.79269, -0.9034, 1.2, 3.32334, -0.792907, 1.30712, 3.39291, -1.10711, 1.40712, 4.20714, -1.30714, 1.30712, 3.39291, -0.992893, 1.29288, 4.20714, -1, 1.20618, 3.88745, -0.992893, 1.40712, 3.79269, -1.1966, 1.2, 3.32334, -0.81005, 1.2, 3.41672, -1.1, 1.20619, 3.88743)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 0.5
+center_of_mass_mode = 1
+sleeping = true
+
+[node name="House-kitchen-pan" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, -1.2, -3.55)
+mesh = ExtResource("1_nb8pa")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, -1.2, -3.55)
+shape = SubResource("ConvexPolygonShape3D_4e7eq")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1nh06maouwdl"]
+
+[ext_resource type="ArrayMesh" uid="uid://yyufluq60r83" path="res://exported/house-window-ac.obj" id="1_sn28b"]
+[ext_resource type="Material" uid="uid://r0333msulgxu" path="res://materials/plastic.tres" id="2_nvenr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_raxx0"]
+points = PackedVector3Array(-3.1, 2.3, 2.3, -3.1, 1.29992, 2.3, -3.1, 2.3, 1.6, -4.9, 2.3, 2.3, -3.1, 1.1, 2.09999, -4.9, 1.29992, 2.3, -3.1, 1.39988, 1.6, -4.9, 2.3, 1.6, -3.1, 1.1, 1.99995, -4.9, 1.1, 2.09999, -3.30016, 1.19996, 1.69997, -4.9, 1.39988, 1.6, -4.9, 1.1, 1.99995, -4.70002, 1.19996, 1.69997)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="House-window-ac" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1.4, -2)
+mesh = ExtResource("1_sn28b")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_nvenr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1.4, -2)
+shape = SubResource("ConvexPolygonShape3D_raxx0")

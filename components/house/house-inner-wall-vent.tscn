@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdvb66ebr8rrt"]
+
+[ext_resource type="ArrayMesh" uid="uid://ceq3r1kxriist" path="res://exported/house-wall-vent.obj" id="1_bj7rw"]
+[ext_resource type="Material" uid="uid://dyxvib1yhggk3" path="res://materials/wall.tres" id="2_lh2dm"]
+[ext_resource type="Material" uid="uid://r0333msulgxu" path="res://materials/plastic.tres" id="3_niu50"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ce84m"]
+points = PackedVector3Array(3.8, 3.9, 7.9, 3.7, 3.9, 7.9, 3.8, 0, 7.89963, 3.8, 3.9, 4.1, 3.7, 3.9, 4.1, 3.7, 0, 7.89963, 3.8, 0, 4.1, 3.7, 0, 4.1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 0, -4.1)
+shape = SubResource("ConvexPolygonShape3D_ce84m")
+
+[node name="House-wall-vent" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 2)
+mesh = ExtResource("1_bj7rw")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_lh2dm")
+surface_material_override/1 = ExtResource("3_niu50")

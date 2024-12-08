@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://nsm5tavh525m"]
+
+[ext_resource type="Shader" path="res://materials/voxel.gdshader" id="1_ebxqq"]
+[ext_resource type="Texture2D" uid="uid://5liqd8hijhmi" path="res://materials/wall-noise.tres" id="2_kygdj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ebxqq")
+shader_parameter/albedo = Color(0.58, 0.562987, 0.4872, 1)
+shader_parameter/point_size = 0.1
+shader_parameter/roughness = 0.9
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = null
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv_scale = 8.0
+shader_parameter/texture_roughness = ExtResource("2_kygdj")
+shader_parameter/texture_normal = ExtResource("2_kygdj")

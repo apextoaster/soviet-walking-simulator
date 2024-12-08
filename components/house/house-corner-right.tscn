@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://cj60tsrctc0g3"]
+
+[ext_resource type="ArrayMesh" uid="uid://btsfomdwr5n5" path="res://exported/corner-right.obj" id="1_2l4w6"]
+[ext_resource type="Material" uid="uid://dyxvib1yhggk3" path="res://materials/wall.tres" id="2_g52xw"]
+[ext_resource type="Material" uid="uid://c2jbyf3txccsm" path="res://materials/wall-highlight.tres" id="3_sxl7t"]
+[ext_resource type="Material" uid="uid://r0333msulgxu" path="res://materials/plastic.tres" id="4_2kkbs"]
+[ext_resource type="Material" uid="uid://delx1ppejhpst" path="res://materials/glass.tres" id="5_dh4hu"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_73gbd"]
+points = PackedVector3Array(-4, 3.99711, 7.81696, -7.7774, -0.0309505, 7.87783, -3.96827, -0.0309505, 7.87783, -7.7774, 4.03095, 8.13175, -3.96827, -0.0309505, 8.13175, -7.83859, 3.9, 7.80922, -3.96827, 4.03095, 8.13175, -7.7774, -0.0309505, 8.13175, -7.74838, 4, 7.81674, -3.96827, 3.84086, 7.81432)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fj6yj"]
+points = PackedVector3Array(-3.96825, 4.03173, 7.81429, -7.7774, 3.84129, 4.06825, -7.7774, 4.03173, 4.06825, -7.86456, 3.83693, 7.9, -3.96825, 3.84129, 4.06825, -7.7774, 4.03173, 7.81429, -3.96825, 3.84129, 7.81429, -3.96825, 4.03173, 4.06825)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_khth1"]
+points = PackedVector3Array(-7.77975, 3.99961, 8.1, -8.03173, -0.0309505, 4.06825, -8.03173, 4.03095, 4.06825, -8.03173, 4.03095, 8.13135, -8.03173, -0.0309505, 8.13135, -7.84127, -0.0309505, 4.06825, -7.77975, 0.000389431, 8.1, -7.77977, 3.99921, 4.1, -7.77779, -0.0309505, 7.87721, -7.77779, 3.84086, 4.06825)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Corner-right" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6.1)
+mesh = ExtResource("1_2l4w6")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_g52xw")
+surface_material_override/1 = ExtResource("3_sxl7t")
+surface_material_override/2 = ExtResource("4_2kkbs")
+surface_material_override/3 = ExtResource("5_dh4hu")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_73gbd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_fj6yj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_khth1")

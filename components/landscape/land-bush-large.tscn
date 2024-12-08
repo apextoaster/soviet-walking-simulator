@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7ewmyi4fq2wb"]
+
+[ext_resource type="ArrayMesh" uid="uid://c6k24xjhdf8us" path="res://exported/land-bush-large.obj" id="1_v003q"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l6tm6"]
+points = PackedVector3Array(0.414294, 1.91429, 4.12855, -0.614286, 1.17129, 4.09985, -0.462722, 0.374761, 3.7, 0.291596, 0.305664, 4.4, 0.299927, 0.800246, 3.38571, -0.2, 1.85375, 3.41977, -0.597222, 1.49996, 4.4, 0.614286, 1.79991, 3.78583, -0.5, 0.324391, 4.27832, 0.293975, 0.3, 3.50803, 0.614286, 1.37123, 4.29991, -0.614286, 1.79991, 3.78583, -0.528541, 0.800067, 3.50009, -0.0141906, 1.79991, 4.41429, -0.128557, 0.0857143, 4.01427, 0.614286, 1.17129, 3.78583, 0.0141907, 1.91429, 3.38571, -0.2, 0.413175, 3.41977, 0.4, 0.31064, 4.28611, -0.0141906, 1.91429, 4.29991, 0.291596, 1.77769, 4.4, -0.614286, 1.37141, 4.41429, 0.614286, 1.37123, 3.67155, -0.3, 0.347645, 4.36977, 0.614286, 1.79991, 4.12855, 0.4, 1.5791, 3.51389, -0.614286, 1.79991, 4.01427, -0.328429, 1.91429, 3.70015, 0.414294, 1.37123, 4.41429, -0.614286, 1.4856, 3.67155, -0.3, 1.73067, 3.43023, -0.3, 0.347645, 3.53471)
+
+[node name="bush-root" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Land-bush-large" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = ExtResource("1_v003q")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+shape = SubResource("ConvexPolygonShape3D_l6tm6")

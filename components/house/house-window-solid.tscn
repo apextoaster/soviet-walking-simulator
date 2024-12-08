@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://biwjlm0hmmcod"]
+
+[ext_resource type="ArrayMesh" uid="uid://c23heo48m0hpf" path="res://exported/window-solid.obj" id="1_kahsk"]
+[ext_resource type="Material" uid="uid://dyxvib1yhggk3" path="res://materials/wall.tres" id="2_7jjpf"]
+[ext_resource type="Material" uid="uid://c2jbyf3txccsm" path="res://materials/wall-highlight.tres" id="3_tb1ty"]
+[ext_resource type="Material" uid="uid://r0333msulgxu" path="res://materials/plastic.tres" id="4_m380h"]
+[ext_resource type="Material" uid="uid://delx1ppejhpst" path="res://materials/glass.tres" id="5_pdn4d"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mn4rc"]
+points = PackedVector3Array(0.0309505, 4.03173, 4.13175, -4.03095, 3.84129, 0.385714, -4.03095, 4.03173, 0.385714, 0.0309505, 3.84129, 0.385714, -4.03095, 3.84129, 4.13175, -4.03095, 4.03173, 4.13175, 0.0309505, 4.03173, 0.385714, 0.0309505, 3.84129, 4.13175)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fcht4"]
+points = PackedVector3Array(-4.03175, -0.0309505, 0.068285, 0, 3.99925, 0.383176, 0.0317087, 3.84086, 0.385652, 0.0317087, 4.03095, 0.068285, -4, 3.99922, 0.383173, 0.0317087, -0.0309505, 0.322179, -4.03175, 4.03095, 0.068285, -4.03175, -0.0309505, 0.322179, 0.0317087, -0.0309505, 0.068285, -4.03175, 3.84086, 0.385652)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Window-solid" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_kahsk")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_7jjpf")
+surface_material_override/1 = ExtResource("3_tb1ty")
+surface_material_override/2 = ExtResource("4_m380h")
+surface_material_override/3 = ExtResource("5_pdn4d")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_mn4rc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_fcht4")

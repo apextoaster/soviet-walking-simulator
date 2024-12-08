@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkj7j8jp33aaq"]
+
+[ext_resource type="ArrayMesh" uid="uid://cock3tr4p6t7j" path="res://exported/light.obj" id="1_u76ul"]
+[ext_resource type="Material" uid="uid://cmhu5r8n2umwm" path="res://materials/light-on.tres" id="2_ajnbm"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.379501, 0)
+light_color = Color(1, 0.950167, 0.87, 1)
+light_energy = 1.25
+light_size = 0.5
+shadow_enabled = true
+
+[node name="Light" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+cast_shadow = 0
+mesh = ExtResource("1_u76ul")
+surface_material_override/0 = ExtResource("2_ajnbm")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://35cx2uvbifc1"]
+
+[ext_resource type="ArrayMesh" uid="uid://c5kw1eomme5ye" path="res://exported/land-path-corner.obj" id="1_r3pt4"]
+[ext_resource type="Material" uid="uid://vu4de2xnm2fj" path="res://materials/concrete.tres" id="2_kogia"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yecaw"]
+points = PackedVector3Array(6.7, 0, -1.3, 6.7, 0, 2, 6.7, 0.0999902, -1.3, 10, 0, -1.3, 6.7, 0.0999902, 2, 9.29969, 0, 2, 6.79981, 0.3, -1.20019, 10, 0.0999902, -1.3, 10, 0, 1.29969, 6.79981, 0.3, 2, 9.29969, 0.0999902, 2, 10, 0.3, -1.20019, 10, 0.0999902, 1.29969, 9.19987, 0.3, 2, 10, 0.3, 1.19987)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Land-path-corner" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_r3pt4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_kogia")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_yecaw")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b56uk25aefaiv"]
+
+[ext_resource type="ArrayMesh" uid="uid://dmtvvd77cpneq" path="res://exported/land-tree.obj" id="1_81gah"]
+[ext_resource type="AudioStream" uid="uid://ohtpllcu0jl2" path="res://sound/515945__seanaubrey__wind-in-the-forest.wav" id="2_davy0"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4fxal"]
+points = PackedVector3Array(0.310317, 2.98651, -0.365873, -0.365873, -0.0560515, -0.253153, -0.365873, -0.0560515, 0.310317, -0.391096, 3.1, -0.269966, 0.310317, 2.98651, 0.310317, 0.310317, -0.0560515, -0.365873, 0.310317, -0.0560515, 0.310317, -0.365873, 2.98651, 0.310317, -0.269966, 3.1, -0.391096, -0.253153, -0.0560515, -0.365873)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ewvpa"]
+points = PackedVector3Array(1.8, 5.83249, -0.129043, -1.9, 4.70778, -0.339693, -1.94054, 4.6999, 0.290517, 0.291541, 3.1, 0.291541, 0.5, 5.96924, 1.76898, -0.236621, 6.06414, -1.7, -0.444719, 7, 0.284469, 0.287296, 3.75704, -1.5001, 0.484526, 4.2, 1.7163, 1.83336, 4.3999, 0.385404, -1.5001, 4.8088, 1.33927, 1.33927, 4.8088, -1.5001, -1.5001, 6.49101, 0.287296, 0.914629, 6.7999, -0.551419, -0.873265, 3.32813, 0.5, -1.3952, 4.8088, -1.5001, -1.19709, 6.4, -1.09069, 1.1, 6.55828, 0.894687, -0.940226, 3.5, -0.636077, -0.535176, 5.73099, 1.8, 1.6, 5.52902, 1.09112, 1.08732, 3.5, -0.43343, 0.4, 4.80415, -1.95466, 1.1, 5.94275, -1.46353, -0.434812, 4.00324, 1.6, -0.848308, 6.55828, 1.1, 0.288093, 6.6, -1.39866, 1.40062, 4, 0.890194, 1.75479, 4.6, -0.866589, -1.8, 5.74858, -0.548717, -1.7, 5.64587, 0.912203, -0.240782, 3.1, -0.347472)
+
+[node name="tree-root" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Land-tree" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_81gah")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_4fxal")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ewvpa")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+stream = ExtResource("2_davy0")
+autoplay = true
+max_distance = 20.0

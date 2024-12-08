@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://coo7628nfrqlv"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddeckfl8frid2" path="res://exported/land-wall.obj" id="1_eycw8"]
+[ext_resource type="Material" uid="uid://vu4de2xnm2fj" path="res://materials/concrete.tres" id="2_mbxnu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tplxh"]
+size = Vector3(16, 4, 0.45)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Land-wall" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.4)
+mesh = ExtResource("1_eycw8")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_mbxnu")
+
+[node name="Land-wall2" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -2, -0.4)
+mesh = ExtResource("1_eycw8")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_mbxnu")
+
+[node name="Land-wall3" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -0.4)
+mesh = ExtResource("1_eycw8")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_mbxnu")
+
+[node name="Land-wall4" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -0.4)
+mesh = ExtResource("1_eycw8")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_mbxnu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -0.225)
+shape = SubResource("BoxShape3D_tplxh")

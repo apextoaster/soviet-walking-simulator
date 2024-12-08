@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccw6xwwcp3144"]
+
+[ext_resource type="ArrayMesh" uid="uid://3ukm234cg3ae" path="res://exported/house-pipe-spout.obj" id="1_b78r6"]
+[ext_resource type="Material" uid="uid://bgfg3rxqwub4r" path="res://materials/water.tres" id="2_6wyoq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8wynn"]
+points = PackedVector3Array(0.522173, 4.03175, 0.139571, 0.649169, 4.03175, 0.0126239, 0.268254, 4.03175, -0.241214, 0.395288, 0.793968, 0.139571, 0.649169, 0.984444, -0.43169, 0.649169, 0.793968, 0.0126239, 0.649169, 3.14243, -0.43169, 0.268254, 0.984444, -0.43169, 0.268254, 4.03175, 0.0126239, 0.268254, 0.793968, 0.0126239, 0.649169, 4.03175, -0.241214, 0.3, 3.02083, -0.38408, 0.395288, 4.03175, 0.139571, 0.522173, 0.793968, 0.139571, 0.522173, 0.793968, -0.304687, 0.522173, 4.03175, -0.304687, 0.268254, 0.793968, -0.241214, 0.649169, 0.793968, -0.241214, 0.4, 3.91147, -0.292902)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nlf6m"]
+points = PackedVector3Array(0.522173, 0.79357, 0.139732, 0.395288, -0.0316652, 0.0762464, 0.522173, -0.0316652, 0.0762464, 0.268254, -0.0316652, 0.647619, 0.268254, 0.79357, -0.241183, 0.649169, -0.0316652, 0.647619, 0.649169, 0.539602, -0.241183, 0.395288, 0.349287, 0.647619, 0.649169, 0.79357, 0.0127606, 0.268254, 0.730078, 0.139732, 0.268254, 0.539602, -0.241183, 0.649169, 0.222303, 0.647619, 0.268254, -0.0316652, 0.139732, 0.649169, -0.0316652, 0.139732, 0.395288, 0.349287, -0.241183, 0.522173, 0.79357, -0.304762, 0.268254, 0.222303, 0.647619, 0.522173, 0.349287, -0.241183, 0.522173, 0.349287, 0.647619, 0.395288, 0.539602, -0.304762, 0.649169, 0.79357, -0.241183, 0.649169, 0.730078, 0.139732, 0.395288, 0.79357, 0.139732, 0.522173, 0.539602, -0.304762, 0.395288, 0.0953189, -0.0507253, 0.268254, 0.79357, 0.0127606, 0.522173, 0.0953189, -0.0507253)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m6068"]
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xnb8x"]
+material = ExtResource("2_6wyoq")
+radius = 0.25
+height = 0.5
+radial_segments = 6
+rings = 6
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="House-pipe-spout" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+mesh = ExtResource("1_b78r6")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_8wynn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_nlf6m")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.145328, 0.75471)
+amount = 3
+lifetime = 2.0
+collision_base_size = 0.1
+process_material = SubResource("ParticleProcessMaterial_m6068")
+draw_pass_1 = SubResource("CapsuleMesh_xnb8x")

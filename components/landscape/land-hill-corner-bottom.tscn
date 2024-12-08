@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmb3ew42jr6ye"]
+
+[ext_resource type="ArrayMesh" uid="uid://bhti5p2sgt525" path="res://exported/land-hill-corner-bottom.obj" id="1_cb7t4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jms4a"]
+size = Vector3(4, 0.3, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wy001"]
+size = Vector3(2.69, 0.2, 4)
+
+[node name="Land-ground-flat" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Land-hill-corner-bottom" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("1_cb7t4")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+shape = SubResource("BoxShape3D_jms4a")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 1.07145, 1.12645, 0)
+shape = SubResource("BoxShape3D_wy001")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-3.09086e-08, 3.09086e-08, 1, 0.707107, 0.707107, 0, -0.707107, 0.707107, -4.37114e-08, 0, 1.125, -1.073)
+shape = SubResource("BoxShape3D_wy001")

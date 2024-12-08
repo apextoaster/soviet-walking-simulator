@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp1tykd803uty"]
+
+[ext_resource type="ArrayMesh" uid="uid://dhjxrljo4qjri" path="res://exported/land-grass-small.obj" id="1_k5mse"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Land-grass-small" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+mesh = ExtResource("1_k5mse")

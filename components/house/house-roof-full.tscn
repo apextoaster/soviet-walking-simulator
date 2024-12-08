@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqnc8w816hue5"]
+
+[ext_resource type="ArrayMesh" uid="uid://dlono2lwbd1ro" path="res://exported/wall-vent.obj" id="1_2qtcm"]
+[ext_resource type="Material" uid="uid://dyxvib1yhggk3" path="res://materials/wall.tres" id="2_jsy7c"]
+[ext_resource type="Material" uid="uid://c2jbyf3txccsm" path="res://materials/wall-highlight.tres" id="3_eadgh"]
+[ext_resource type="Material" uid="uid://r0333msulgxu" path="res://materials/plastic.tres" id="4_jlswq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_17eil"]
+points = PackedVector3Array(-0.0313735, 3.84086, 7.81432, 4.03171, 4.03095, 8.13175, 4.03171, -0.0309505, 8.13175, -0.0313735, 4.03095, 8.13175, 4, 3.99924, 7.81679, -0.0313735, -0.0309505, 7.87783, 4.03171, -0.0309505, 7.87783, -0.0313735, -0.0309505, 8.13175, 0, 3.99959, 7.81677, 4.03171, 3.84086, 7.81432)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h3381"]
+points = PackedVector3Array(4.03095, 4.03173, 7.81429, -0.0309505, 3.84129, 4.06825, -0.0309505, 4.03173, 4.06825, 4.03095, 3.84129, 4.06825, -0.0309505, 3.84129, 7.81429, -0.0309505, 4.03173, 7.81429, 4.03095, 4.03173, 4.06825, 4.03095, 3.84129, 7.81429)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Wall-vent" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_2qtcm")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_jsy7c")
+surface_material_override/1 = ExtResource("3_eadgh")
+surface_material_override/2 = ExtResource("4_jlswq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_17eil")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_h3381")

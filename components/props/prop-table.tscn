@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://otdaupaedhp0"]
+
+[ext_resource type="Script" path="res://scripts/prop_interact.gd" id="1_la1sv"]
+[ext_resource type="ArrayMesh" uid="uid://cmefj8kiwmji1" path="res://exported/prop-table.obj" id="2_wn6on"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_228ny"]
+points = PackedVector3Array(1.16825, 1.07702, 0.26746, -1.12499, 1.04386, -0.7, -1.16825, 1.22302, -0.718254, -1.16825, 1.22302, 0.26746, 1.16825, 1.22302, -0.718254, 1.12499, 1.04386, -0.7, -1.16825, 1.07702, 0.26746, 1.16825, 1.22302, 0.26746, 1.16825, 1.04048, -0.572172, -1.16825, 1.04048, -0.572172)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vuaa2"]
+points = PackedVector3Array(1.08076, 1.04731, 0.9, -1.16825, 1.07702, 0.267589, -1.16825, 1.22302, 0.267589, 1.16825, 1.07702, 0.267589, -1.16825, 1.22302, 0.924603, 1.16825, 1.22302, 0.924603, -1.08076, 1.04731, 0.9, 1.16825, 1.22302, 0.267589, 1.16825, 1.04048, 0.778471, -1.16825, 1.04048, 0.778471)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_plsfg"]
+points = PackedVector3Array(-1.16825, -0.0182539, -0.718254, -1.02224, 1.04048, -0.572222, -1.16825, 1.04048, -0.572222, -1.02224, -0.0182539, -0.572222, -1.02224, 1.04048, -0.718254, -1.16825, 1.04048, -0.718254, -1.16825, -0.0182539, -0.572222, -1.02224, -0.0182539, -0.718254)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qxioy"]
+points = PackedVector3Array(1.02224, -0.0182539, -0.718254, 1.16825, 1.04048, -0.572222, 1.02224, 1.04048, -0.572222, 1.16825, -0.0182539, -0.572222, 1.16825, 1.04048, -0.718254, 1.02224, 1.04048, -0.718254, 1.02224, -0.0182539, -0.572222, 1.16825, -0.0182539, -0.718254)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oh8ak"]
+points = PackedVector3Array(-1.16825, -0.0182539, 0.778571, -1.02224, 1.04048, 0.924603, -1.16825, 1.04048, 0.924603, -1.02224, -0.0182539, 0.924603, -1.02224, 1.04048, 0.778571, -1.16825, 1.04048, 0.778571, -1.16825, -0.0182539, 0.924603, -1.02224, -0.0182539, 0.778571)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gxoh4"]
+points = PackedVector3Array(1.02224, -0.0182539, 0.778571, 1.16825, 1.04048, 0.924603, 1.02224, 1.04048, 0.924603, 1.16825, -0.0182539, 0.924603, 1.16825, 1.04048, 0.778571, 1.02224, 1.04048, 0.778571, 1.02224, -0.0182539, 0.924603, 1.16825, -0.0182539, 0.778571)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_la1sv")
+interaction_tooltip = "Table"
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+sleeping = true
+
+[node name="Prop-table" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, -2.1)
+mesh = ExtResource("2_wn6on")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_228ny")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_vuaa2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_plsfg")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_qxioy")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_oh8ak")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_gxoh4")
+
+[connection signal="input_event" from="RigidBody3D" to="." method="_on_rigid_body_3d_input_event"]
+[connection signal="mouse_entered" from="RigidBody3D" to="." method="_on_physics_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="RigidBody3D" to="." method="_on_physics_body_3d_mouse_exited"]

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dbdpslkrmh3ig"]
+
+[ext_resource type="Texture2D" uid="uid://5liqd8hijhmi" path="res://materials/wall-noise.tres" id="1_mc0lv"]
+
+[resource]
+albedo_color = Color(0.678338, 0.249511, 0.625726, 1)
+roughness_texture = ExtResource("1_mc0lv")
+normal_enabled = true
+normal_texture = ExtResource("1_mc0lv")
+ao_enabled = true

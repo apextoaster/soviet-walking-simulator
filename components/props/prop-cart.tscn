@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm7yki2gjmsxr"]
+
+[ext_resource type="Script" path="res://scripts/prop_interact.gd" id="1_m4tdk"]
+[ext_resource type="ArrayMesh" uid="uid://qkbas4ue38u8" path="res://exported/prop-cart.obj" id="2_tc51a"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wf87s"]
+points = PackedVector3Array(0.797497, 1.48426, 0.4, -0.481829, 0.11361, -0.4, -0.473227, 0.122209, 0.3, 0.68823, 0.00777472, -0.5, 0, 1.36898, -0.478741, 0.682615, 0.0155869, 0.4, -0.511905, 0.821366, 0.416667, 0.8, 1.48712, -0.496981, -0.511905, 0.821366, -0.511905, 2.77556e-17, 1.36898, 0.383503, -0.390852, 0.0226062, -0.4, 0.821429, 1.29743, 0.416667, 0.487965, -0.0117556, 0.416667, 0.678515, 1.51161, -0.511905, -0.487048, 0.2, -0.494594, -0.487048, 0.2, 0.399356, 0.487965, -0.0117556, -0.511905, -0.383479, 0.0324349, 0.3, 0.821429, 1.29743, -0.511905, 0.678515, 1.51161, 0.416667)
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("physics_body")]
+script = ExtResource("1_m4tdk")
+interaction_tooltip = "Shopping Cart"
+interaction_impulse = 2.0
+physics_body = NodePath("RigidBody3D")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 2.0
+center_of_mass_mode = 1
+sleeping = true
+
+[node name="Prop-cart" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = ExtResource("2_tc51a")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_wf87s")
+
+[connection signal="input_event" from="RigidBody3D" to="." method="_on_rigid_body_3d_input_event"]
+[connection signal="mouse_entered" from="RigidBody3D" to="." method="_on_physics_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="RigidBody3D" to="." method="_on_physics_body_3d_mouse_exited"]

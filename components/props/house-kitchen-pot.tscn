@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfl6k1c8hirga"]
+
+[ext_resource type="ArrayMesh" uid="uid://dbl2kjva85s4p" path="res://exported/house-kitchen-pot.obj" id="1_ddl08"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xl0fm"]
+points = PackedVector3Array(-0.79997, 1.2, 3.40707, -0.494444, 1.50552, 3.70563, -0.6, 1.49004, 4.07002, -0.494444, 1.19447, 3.70563, -0.79997, 1.5, 3.40707, -0.5, 1.20003, 3.40714, -0.705526, 1.39441, 4.10542, -0.805495, 1.19447, 3.70563, -0.5, 1.49997, 3.40714, -0.805495, 1.50552, 3.70563, -0.594474, 1.39441, 4.10542, -0.7, 1.49005, 4.07006)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 0.5
+center_of_mass_mode = 1
+sleeping = true
+
+[node name="House-kitchen-pot" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -1.2, -3.5)
+mesh = ExtResource("1_ddl08")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -1.2, -3.5)
+shape = SubResource("ConvexPolygonShape3D_xl0fm")

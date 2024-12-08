@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bxs02olmr88m8"]
+
+[ext_resource type="Shader" uid="uid://8eilwuhddxgp" path="res://materials/debug-uv-shader.tres" id="1_mpkr4"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mpkr4")

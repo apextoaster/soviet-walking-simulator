@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://be0dnsp7cpd7t"]
+
+[ext_resource type="Script" path="res://scripts/prop_interact.gd" id="1_h8wch"]
+[ext_resource type="ArrayMesh" uid="uid://c8jdcto0nsuw0" path="res://exported/prop-sofa.obj" id="1_ns7di"]
+[ext_resource type="Material" uid="uid://dbdpslkrmh3ig" path="res://materials/cloth-highlight.tres" id="2_ehcd5"]
+[ext_resource type="Material" uid="uid://cxh4f0lrwv4tr" path="res://materials/cloth.tres" id="3_bj4vo"]
+[ext_resource type="Material" uid="uid://3xoc04bosjov" path="res://materials/cloth-cord.tres" id="4_le2aw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qj7xr"]
+points = PackedVector3Array(1.44768, 1.11587, 0.920399, 1.16667, 0, -0.368254, 1.9, 0.0139194, -0.350671, 1.16839, 0.00251315, 1, 1.9, 0.0139194, 0.985592, 1.9, 1.07179, -0.350671, 1.14603, 0.633274, -0.406349, 1.9, 1.07179, 0.874019, 1.14603, 0.633274, 1.04127, 1.44768, 1.11587, -0.406349, 1.93016, 0.633274, 1.04127)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4r1c5"]
+points = PackedVector3Array(1.14603, 0.633274, 1.04127, -1.84921, 1.11022e-16, -0.368254, -1.88755, 1.1, -0.386299, 1.14603, 0.633274, -0.406349, -1.93016, 0.633274, 1.04127, 1.05833, 0.00251315, 1, 1.06508, 1.11022e-16, -0.368254, -1.84246, 0.00251315, 1, -1.44717, 1.11587, 0.920399, -1.44717, 1.11587, -0.406349, -1.87812, 1.09649, 0.9)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ntaph"]
+points = PackedVector3Array(-1.8679, -2.22045e-16, -0.418023, 1.93016, 1.83968, -0.466779, 1.76967, 1.76195, -1.1, -1.93016, 1.83968, -0.466779, -1.76967, 0.047576, -1.1, 1.8679, -2.22045e-16, -0.418023, 1.76967, 0.047576, -1.1, -1.76967, 1.76195, -1.1, -1.78568, 1.1, -0.433436, 1.78568, 1.1, -0.433436)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_h8wch")
+interaction_tooltip = "Sofa"
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="Prop-sofa" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = ExtResource("1_ns7di")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_ehcd5")
+surface_material_override/1 = ExtResource("4_le2aw")
+surface_material_override/2 = ExtResource("3_bj4vo")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_qj7xr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_4r1c5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ntaph")
+
+[connection signal="input_event" from="RigidBody3D" to="." method="_on_rigid_body_3d_input_event"]
+[connection signal="mouse_entered" from="RigidBody3D" to="." method="_on_physics_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="RigidBody3D" to="." method="_on_physics_body_3d_mouse_exited"]

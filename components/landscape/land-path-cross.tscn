@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://51bugs5clx1v"]
+
+[ext_resource type="ArrayMesh" uid="uid://dck2eg8cibonx" path="res://exported/land-path-cross.obj" id="1_gk8gt"]
+[ext_resource type="Material" uid="uid://vu4de2xnm2fj" path="res://materials/concrete.tres" id="2_36564"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8pcvc"]
+points = PackedVector3Array(-1.30031, 0, -6, -2, 0, -5.30031, -1.30031, 0.0999902, -6, 1.29992, 0, -6, -2, 0.0999902, -5.30031, -2, 0, -2.70008, -1.20008, 0.3, -6, 1.29992, 0.0999902, -6, 2, 0, -5.30031, -2, 0.3, -5.20008, -2, 0.0999902, -2.70008, -1.30031, 0, -2, 1.19969, 0.3, -6, 2, 0.0999902, -5.30031, 2, 0, -2.70008, -2, 0.3, -2.80031, -1.30031, 0.0999902, -2, 1.29992, 0, -2, 2, 0.3, -5.20008, 2, 0.0999902, -2.70008, -1.20008, 0.3, -2, 1.29992, 0.0999902, -2, 2, 0.3, -2.80031, 1.19969, 0.3, -2)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Land-path-cross" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_gk8gt")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_36564")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+shape = SubResource("ConvexPolygonShape3D_8pcvc")

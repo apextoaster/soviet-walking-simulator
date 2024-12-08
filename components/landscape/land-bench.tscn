@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6va3gri5ar0m"]
+
+[ext_resource type="ArrayMesh" uid="uid://c3nj2g0yvbjn" path="res://exported/land-bench.obj" id="1_pc30p"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nbx1f"]
+points = PackedVector3Array(1.49972, 1.6, -0.400078, 1.49972, 1.19984, 0.6, 1.49972, 1.6, -0.5, -1.4, 1.6, -0.400078, 1.49972, 0, 0.6, -1.4, 1.19984, 0.6, 1.49972, 1.09992, -0.5, -1.4, 1.6, -0.5, 1.49972, 0, -0.400078, -1.4, 0, 0.6, -1.4, 1.09992, -0.5, -1.4, 0, -0.400078)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Land-bench" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("1_pc30p")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_nbx1f")
